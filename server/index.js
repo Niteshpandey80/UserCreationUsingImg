@@ -23,5 +23,9 @@ app.get('/user' , async(req,res)=>{
     const user = await User.find();
     res.json(user)
 })
-
+app.delete('/user/:id' , async(req,res)=>{
+    const {id} = req.params;
+    await User.findByIdAndDelete(id);
+    res.json({message:"user deleted" })
+})
 app.listen(3000)
