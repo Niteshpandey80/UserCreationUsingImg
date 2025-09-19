@@ -8,7 +8,11 @@ const CreateUser = () => {
 
 
     const handleSubmit = async(e)=>{
-        e.preventDefault();
+      e.preventDefault();
+       if(!name || !email || !image){
+        alert("Please fill all fields");
+        return;
+       }
         await axios.post('http://localhost:3000/add' ,{name , email ,image});
         setName("") ; setEmail("");setImage("");
         alert("User Added")
